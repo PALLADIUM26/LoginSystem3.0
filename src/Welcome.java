@@ -28,6 +28,7 @@ public class Welcome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOME");
@@ -58,6 +59,19 @@ public class Welcome extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 100);
 
+        btnOK.setBackground(new java.awt.Color(0, 102, 102));
+        btnOK.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnOK.setForeground(new java.awt.Color(204, 255, 255));
+        btnOK.setText("OK");
+        btnOK.setFocusable(false);
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOKActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnOK);
+        btnOK.setBounds(320, 390, 76, 26);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,6 +85,15 @@ public class Welcome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        // TODO add your handling code here:
+        Home homeFrame = new Home();
+        homeFrame.setVisible(true);
+        homeFrame.pack();
+        homeFrame.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,6 +131,7 @@ public class Welcome extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
