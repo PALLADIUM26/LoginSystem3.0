@@ -41,7 +41,7 @@ public class Welcome extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("LOGGED IN SUCCESSFULLY");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(300, 280, 210, 16);
+        jLabel1.setBounds(310, 240, 210, 16);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -70,7 +70,7 @@ public class Welcome extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnOK);
-        btnOK.setBounds(320, 390, 76, 26);
+        btnOK.setBounds(350, 280, 76, 26);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
