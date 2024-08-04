@@ -60,7 +60,7 @@ public class Welcome extends javax.swing.JFrame {
         jPanel2.setBounds(0, 0, 800, 100);
 
         btnOK.setBackground(new java.awt.Color(0, 102, 102));
-        btnOK.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnOK.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnOK.setForeground(new java.awt.Color(204, 255, 255));
         btnOK.setText("OK");
         btnOK.setFocusable(false);
@@ -70,7 +70,7 @@ public class Welcome extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnOK);
-        btnOK.setBounds(350, 280, 76, 26);
+        btnOK.setBounds(350, 280, 76, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -151,18 +151,22 @@ public class SignUp extends javax.swing.JFrame {
         tfUsername.setBackground(new java.awt.Color(51, 51, 51));
         tfUsername.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfUsername.setForeground(new java.awt.Color(153, 255, 255));
+        tfUsername.setCaretColor(new java.awt.Color(153, 255, 255));
 
         tfPassword1.setBackground(new java.awt.Color(51, 51, 51));
         tfPassword1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfPassword1.setForeground(new java.awt.Color(153, 255, 255));
+        tfPassword1.setCaretColor(new java.awt.Color(153, 255, 255));
 
         tfPassword2.setBackground(new java.awt.Color(51, 51, 51));
         tfPassword2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfPassword2.setForeground(new java.awt.Color(153, 255, 255));
+        tfPassword2.setCaretColor(new java.awt.Color(153, 255, 255));
 
         tfEmail.setBackground(new java.awt.Color(51, 51, 51));
         tfEmail.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfEmail.setForeground(new java.awt.Color(153, 255, 255));
+        tfEmail.setCaretColor(new java.awt.Color(153, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

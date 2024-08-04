@@ -1,3 +1,8 @@
+
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -31,7 +36,7 @@ public class Sylvia extends javax.swing.JFrame {
         tfInput = new javax.swing.JTextField();
         tfOutput = new javax.swing.JTextField();
         btnConvert = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         btnCopy = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,54 +44,110 @@ public class Sylvia extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SYLVIA");
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
+        Base1.setBackground(new java.awt.Color(51, 51, 51));
+        Base1.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        Base1.setForeground(new java.awt.Color(153, 255, 255));
         Base1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "8", "10", "16" }));
+        Base1.setToolTipText("");
+        Base1.setFocusable(false);
 
+        Base2.setBackground(new java.awt.Color(51, 51, 51));
+        Base2.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        Base2.setForeground(new java.awt.Color(153, 255, 255));
         Base2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "8", "10", "16" }));
+        Base2.setFocusable(false);
 
+        tfInput.setBackground(new java.awt.Color(51, 51, 51));
+        tfInput.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        tfInput.setForeground(new java.awt.Color(153, 255, 255));
+        tfInput.setCaretColor(new java.awt.Color(153, 255, 255));
+
+        tfOutput.setBackground(new java.awt.Color(51, 51, 51));
+        tfOutput.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        tfOutput.setForeground(new java.awt.Color(153, 255, 255));
+        tfOutput.setCaretColor(new java.awt.Color(153, 255, 255));
+
+        btnConvert.setBackground(new java.awt.Color(0, 102, 102));
+        btnConvert.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnConvert.setForeground(new java.awt.Color(255, 255, 255));
         btnConvert.setText("Convert");
+        btnConvert.setFocusable(false);
 
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
+        btnReset.setBackground(new java.awt.Color(0, 102, 102));
+        btnReset.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setText("Reset");
+        btnReset.setFocusable(false);
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
 
+        btnCopy.setBackground(new java.awt.Color(0, 102, 102));
+        btnCopy.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnCopy.setForeground(new java.awt.Color(255, 255, 255));
         btnCopy.setText("Copy");
+        btnCopy.setFocusable(false);
+        btnCopy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCopyActionPerformed(evt);
+            }
+        });
 
+        btnSave.setBackground(new java.awt.Color(0, 102, 102));
+        btnSave.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
+        btnSave.setFocusable(false);
 
+        jLabel1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("Input");
 
+        jLabel2.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 255, 255));
         jLabel2.setText("Output");
 
+        jLabel3.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 255, 255));
         jLabel3.setText("Base 1");
 
+        jLabel4.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 255, 255));
         jLabel4.setText("Base 2");
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
-        btnHome.setText("Home");
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-
+        btnLogOut.setBackground(new java.awt.Color(0, 0, 0));
+        btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(153, 255, 255));
         btnLogOut.setText("Log Out");
+        btnLogOut.setFocusable(false);
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogOutActionPerformed(evt);
+            }
+        });
+
+        btnHome.setBackground(new java.awt.Color(0, 0, 0));
+        btnHome.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(153, 255, 255));
+        btnHome.setText("Home");
+        btnHome.setFocusable(false);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
             }
         });
 
@@ -94,21 +155,21 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(btnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 580, Short.MAX_VALUE)
-                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addComponent(btnLogOut)
+                .addGap(44, 44, 44))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogOut)
                     .addComponent(btnHome))
-                .addGap(35, 35, 35))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -117,34 +178,35 @@ public class Sylvia extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfInput, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Base1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Base2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(180, 180, 180)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnConvert)
-                        .addGap(37, 37, 37)
+                        .addGap(29, 29, 29)
                         .addComponent(btnCopy)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnClear)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnReset)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSave))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(tfOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Base1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Base2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfInput, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +228,7 @@ public class Sylvia extends javax.swing.JFrame {
                     .addComponent(tfOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
+                    .addComponent(btnReset)
                     .addComponent(btnSave)
                     .addComponent(btnCopy)
                     .addComponent(btnConvert)))
@@ -204,11 +266,18 @@ public class Sylvia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         tfInput.setText("");
         tfOutput.setText("");
-    }//GEN-LAST:event_btnClearActionPerformed
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopyActionPerformed
+        // TODO add your handling code here:
+        StringSelection stringSelection = new StringSelection (tfOutput.getText());
+        Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
+        clpbrd.setContents (stringSelection, null);
+    }//GEN-LAST:event_btnCopyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,11 +317,11 @@ public class Sylvia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Base1;
     private javax.swing.JComboBox<String> Base2;
-    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnConvert;
     private javax.swing.JButton btnCopy;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

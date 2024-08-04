@@ -128,17 +128,19 @@ public class SignIn extends javax.swing.JFrame {
         tfId.setBackground(new java.awt.Color(51, 51, 51));
         tfId.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfId.setForeground(new java.awt.Color(153, 255, 255));
+        tfId.setCaretColor(new java.awt.Color(153, 255, 255));
 
         tfPassword.setBackground(new java.awt.Color(51, 51, 51));
         tfPassword.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         tfPassword.setForeground(new java.awt.Color(153, 255, 255));
+        tfPassword.setCaretColor(new java.awt.Color(153, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 255, 255));
         jLabel6.setText("I don't have an account...");
 
         btnSignIn.setBackground(new java.awt.Color(0, 102, 102));
-        btnSignIn.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnSignIn.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(255, 255, 255));
         btnSignIn.setText("Sign In");
         btnSignIn.setAlignmentY(0.0F);
@@ -150,7 +152,7 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         btnRegister.setBackground(new java.awt.Color(0, 102, 102));
-        btnRegister.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnRegister.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("Register");
         btnRegister.setAlignmentY(0.0F);
@@ -162,7 +164,7 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         btnReset.setBackground(new java.awt.Color(0, 102, 102));
-        btnReset.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnReset.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReset.setText("Reset");
         btnReset.setFocusable(false);
@@ -199,7 +201,7 @@ public class SignIn extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                                 .addComponent(btnRegister))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btnReset)
@@ -237,7 +239,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btnRegister))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
