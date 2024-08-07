@@ -276,6 +276,8 @@ public class SignUp extends javax.swing.JFrame {
         
         if(username.isEmpty() || email.isEmpty() || password1.isEmpty() || password2.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter all fields", "Try Again", JOptionPane.ERROR_MESSAGE);
+        } else if(!password1.equals(password2)){
+            JOptionPane.showMessageDialog(this, "Passwords Not Matching", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
             // store in file
             Vector<String> readUserData = new Vector<>(3); //vector to store user's credentials

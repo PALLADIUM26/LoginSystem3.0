@@ -2,6 +2,7 @@
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -283,11 +284,31 @@ public class Sylvia extends javax.swing.JFrame {
 
     private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
         // TODO add your handling code here:
+        String input = tfInput.getText();   
+        int base1 = Integer.parseInt(Base1.getItemAt(Base1.getSelectedIndex()));
+        int base2 = Integer.parseInt(Base2.getItemAt(Base2.getSelectedIndex()));
         
+        try{
+            if (input.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Input box is Empty", "Try Again", JOptionPane.ERROR_MESSAGE);
+            } else if (base1 == base2) {
+                JOptionPane.showMessageDialog(this, "Conversion cannot occur with same bases", "Try Again", JOptionPane.ERROR_MESSAGE);
+            } else {
+                System.out.println("lol");
+                String result = "lol";
+                tfOutput.setText(result);
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }        
     }//GEN-LAST:event_btnConvertActionPerformed
 
     private void btnSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapActionPerformed
         // TODO add your handling code here:
+        String input = tfInput.getText();
+        String output = tfOutput.getText();
+        tfInput.setText(output);
+        tfOutput.setText(input);
     }//GEN-LAST:event_btnSwapActionPerformed
 
     private void btnWorkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkingActionPerformed
