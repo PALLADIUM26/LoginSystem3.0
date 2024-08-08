@@ -288,19 +288,19 @@ public class Sylvia extends javax.swing.JFrame {
         int base1 = Integer.parseInt(Base1.getItemAt(Base1.getSelectedIndex()));
         int base2 = Integer.parseInt(Base2.getItemAt(Base2.getSelectedIndex()));
         
-        try{
+        try {
             if (input.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Input box is Empty", "Try Again", JOptionPane.ERROR_MESSAGE);
             } else if (base1 == base2) {
                 JOptionPane.showMessageDialog(this, "Conversion cannot occur with same bases", "Try Again", JOptionPane.ERROR_MESSAGE);
             } else {
-                System.out.println("lol");
+//                System.out.println("lol");
                 String result = "lol";
                 tfOutput.setText(result);
             }
         } catch (Exception e){
             System.out.println(e);
-        }        
+        }
     }//GEN-LAST:event_btnConvertActionPerformed
 
     private void btnSwapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSwapActionPerformed

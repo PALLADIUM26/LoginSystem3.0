@@ -20,7 +20,6 @@ public class SignIn extends javax.swing.JFrame {
      * Creates new form SIgnIn
      */
     public SignIn() {
-        
         initComponents();
         tfId.setEditable(false);
 
@@ -285,8 +284,6 @@ public class SignIn extends javax.swing.JFrame {
         String id = tfId.getText();
         String password = String.valueOf(tfPassword.getPassword());
         
-//        if(btnUsername.isSelected() == false && btnEmail.isSelected() == false)
-        
         if(id.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter all fields", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -299,12 +296,7 @@ public class SignIn extends javax.swing.JFrame {
                 input.close();
                 file.close();
                 int flag = -1;
-//                for(int i=0; i<data.size(); i++) {
-//                    Vector userData = data.get(i);
-//                    for(int j=0; j<userData.size(); j++){
-//                        System.out.print(userData.get(j)+" ");
-//                    }System.out.println();
-//                }
+                
                 for(int i=0; i<data.size(); i++) {
                     Vector userData = data.get(i);
                     if(userData.get(x).equals(id) && userData.get(2).equals(password)){
