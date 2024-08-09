@@ -295,8 +295,27 @@ public class Sylvia extends javax.swing.JFrame {
             } else if (base1 == base2) {
                 JOptionPane.showMessageDialog(this, "Conversion cannot occur with same bases", "Try Again", JOptionPane.ERROR_MESSAGE);
             } else {
-//                System.out.println("lol");
-                String result = "lol";
+                String result = "";
+                if (base1 == 10) { //decimal to other
+                    while (Integer.parseInt(input) != 0) {
+                        result = (Integer.parseInt(input))%base2 + result;
+                        input = "" + Integer.parseInt(input)/base2;
+                    }
+                } else if (base2 == 10) { //other to decimal
+                    int power = 0;
+                    int r = 0;
+                    while (Integer.parseInt(input) != 0) {
+                        r = r + ((Integer.parseInt(input))%10)*(int)(Math.pow(base1, power));
+                        result = r + "";
+                        input = ""+Integer.parseInt(input)/10;
+                        power++;
+                    }
+                }// else if (base1 == 2 && base2 == 8)
+                // else if (base1 == 8 && base2 == 2)
+                // else if (base1 == 2 && base2 == 16)
+                // else if (base1 == 16 && base2 == 2)
+                // else if (base1 == 8 && base2 == 16)
+                // else if (base1 == 16 && base2 == 8)
                 tfOutput.setText(result);
             }
         } catch (Exception e){
@@ -314,6 +333,7 @@ public class Sylvia extends javax.swing.JFrame {
 
     private void btnWorkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkingActionPerformed
         // TODO add your handling code here:
+        System.out.println("Working");
     }//GEN-LAST:event_btnWorkingActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
