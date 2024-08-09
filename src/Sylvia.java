@@ -3,6 +3,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -317,6 +318,35 @@ public class Sylvia extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        String input = tfInput.getText();   
+        String base1 = Base1.getItemAt(Base1.getSelectedIndex());
+        String base2 = Base2.getItemAt(Base2.getSelectedIndex());
+        String output = tfOutput.getText();  
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+//            s.executeUpdate("INSERT INTO data VALUES(?, ?, ?, ?);");
+
+//            String query = "INSERT INTO data VALUES(?, ?, ?, ?);";
+            String query = "INSERT INTO data VALUES('"+input+"','"+base1+"','"+base2+"','"+output+"')";
+            s.executeUpdate(query);
+            con.close();
+            
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setString(1, input);
+//            ps.setString(2, base1);
+//            ps.setString(3, base2);
+//            ps.setString(4, output);
+//            ps.addBatch();
+            
+            System.out.println("Update executed Successfully!");
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
