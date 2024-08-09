@@ -280,20 +280,37 @@ public class SignUp extends javax.swing.JFrame {
                 Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
                 Statement s = con.createStatement();
                 System.out.println("Connection extablished Successfully!");
-                String query = "INSERT INTO users VALUES('"+username+"','"+email+"','"+password1+"')";
-                s.executeUpdate(query);
+                
+                String check = "select * from users;";
+                ResultSet result = s.executeQuery(check);
+                
+                int flag = 0;
+                while(result.next()) {
+                    if (result.getString("uname").equals(username)){
+                        flag = 1;
+                        break;
+                    }
+                }
+                
+                if (flag == 0){
+                    String query = "INSERT INTO users VALUES('"+username+"','"+email+"','"+password1+"')";
+                    s.executeUpdate(query);
+                    System.out.println("Data Inserted Successfully!");
+                    
+                    // redirect to login page
+                    SignIn signInFrame = new SignIn();
+                    signInFrame.setVisible(true);
+                    signInFrame.pack();
+                    signInFrame.setLocationRelativeTo(null);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "User already exists", "Try Again", JOptionPane.ERROR_MESSAGE);
+                }
                 con.close();
-                System.out.println("Data Inserted Successfully!");
+                
             } catch(Exception e) {
                 e.printStackTrace();
             }
-            
-            // redirect to login page
-            SignIn signInFrame = new SignIn();
-            signInFrame.setVisible(true);
-            signInFrame.pack();
-            signInFrame.setLocationRelativeTo(null);
-            this.dispose();
         }
     }//GEN-LAST:event_btnSignUpActionPerformed
 
