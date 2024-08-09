@@ -331,7 +331,7 @@ public class Sylvia extends javax.swing.JFrame {
 //            s.executeUpdate("INSERT INTO data VALUES(?, ?, ?, ?);");
 
 //            String query = "INSERT INTO data VALUES(?, ?, ?, ?);";
-            String query = "INSERT INTO data VALUES('"+input+"','"+base1+"','"+base2+"','"+output+"')";
+            String query = "INSERT INTO dataValues VALUES('"+input+"','"+base1+"','"+base2+"','"+output+"')";
             s.executeUpdate(query);
             con.close();
             

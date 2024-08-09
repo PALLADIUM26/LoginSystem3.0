@@ -1,11 +1,6 @@
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Vector;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -279,44 +274,16 @@ public class SignUp extends javax.swing.JFrame {
         } else if(!password1.equals(password2)){
             JOptionPane.showMessageDialog(this, "Passwords Not Matching", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
-            // store in file
-            Vector<String> readUserData = new Vector<>(3); //vector to store user's credentials
-            readUserData.add(username);
-            readUserData.add(email);
-            readUserData.add(password1);
-            
+            // store in db
             try {
-                File f = new File("file.bin");
-                if (f.exists()){
-                    FileInputStream fileInp = new FileInputStream("file.bin");
-                    ObjectInputStream input = new ObjectInputStream(fileInp);
-                    Vector<Vector> storedData = (Vector<Vector>) input.readObject();
-                    input.close();
-                    fileInp.close();
-
-                    Vector<Vector> readData = new Vector<>(storedData.size());
-                    for(int i=0; i<storedData.size(); i++) {
-                        readData.add(storedData.get(i));
-                    }
-                    storedData.add(readUserData);
-                    readData.add(readUserData);
-
-                    FileOutputStream fileOp = new FileOutputStream("file.bin");
-                    ObjectOutputStream output = new ObjectOutputStream(fileOp);
-                    output.writeObject(readData);
-    //                output.writeObject(storedData);
-                    output.close();
-                    fileOp.close();
-                } else {
-                    Vector<Vector> readData = new Vector<>(1);
-                    readData.add(readUserData);
-                    FileOutputStream fileOp = new FileOutputStream("file.bin");
-                    ObjectOutputStream output = new ObjectOutputStream(fileOp);
-                    output.writeObject(readData);
-                    output.close();
-                    fileOp.close();
-                }
-                
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+                Statement s = con.createStatement();
+                System.out.println("Connection extablished Successfully!");
+                String query = "INSERT INTO users VALUES('"+username+"','"+email+"','"+password1+"')";
+                s.executeUpdate(query);
+                con.close();
+                System.out.println("Update executed Successfully!");
             } catch(Exception e) {
                 e.printStackTrace();
             }
