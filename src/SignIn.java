@@ -1,9 +1,6 @@
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -277,6 +274,7 @@ public class SignIn extends javax.swing.JFrame {
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
         
+        //do something with this x
         int x = -1;
         if(btnUsername.isSelected() == true) x = 0;
         else if(btnEmail.isSelected() == true) x = 1;
@@ -287,23 +285,28 @@ public class SignIn extends javax.swing.JFrame {
         if(id.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter all fields", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
-            try {
-                FileInputStream file = new FileInputStream("file.bin");
-                ObjectInputStream input = new ObjectInputStream(file);
-
-                Vector<Vector> data = (Vector<Vector>) input.readObject();
-
-                input.close();
-                file.close();
-                int flag = -1;
+            try {                
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+                Statement s = con.createStatement();
+                System.out.println("Connection extablished Successfully!");
+                String query = "";
                 
-                for(int i=0; i<data.size(); i++) {
-                    Vector userData = data.get(i);
-                    if(userData.get(x).equals(id) && userData.get(2).equals(password)){
-                        flag = i;
+                if (x == 0) query = "select * from users where uname='"+id+"';";
+                else if (x == 1) query = "select * from users where email='"+id+"';";
+                ResultSet result = s.executeQuery(query);
+                System.out.println("Data Fetched Successfully!");
+                
+                int flag = -1;
+                while(result.next()) {
+                    if ((result.getString("uname").equals(id) && result.getString("password").equals(password)) || (result.getString("email").equals(id) && result.getString("password").equals(password))){
+                        flag = 1;
                         break;
                     }
                 }
+                
+                con.close();
+                                
                 if (flag != -1) {
                     Welcome welcomeFrame = new Welcome();
                     welcomeFrame.setVisible(true);

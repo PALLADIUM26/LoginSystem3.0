@@ -337,7 +337,7 @@ public class Sylvia extends javax.swing.JFrame {
             
 //            PreparedStatement ps = con.prepareStatement(query);
 //            ps.setString(1, input);
-//            ps.setString(2, base1);
+//            ps.setString(2, base1); //setInt()
 //            ps.setString(3, base2);
 //            ps.setString(4, output);
 //            ps.addBatch();

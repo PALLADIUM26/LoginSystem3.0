@@ -283,7 +283,7 @@ public class SignUp extends javax.swing.JFrame {
                 String query = "INSERT INTO users VALUES('"+username+"','"+email+"','"+password1+"')";
                 s.executeUpdate(query);
                 con.close();
-                System.out.println("Update executed Successfully!");
+                System.out.println("Data Inserted Successfully!");
             } catch(Exception e) {
                 e.printStackTrace();
             }
