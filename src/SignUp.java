@@ -265,8 +265,8 @@ public class SignUp extends javax.swing.JFrame {
         String subject = "Warmth";
         //generate otp
         String text = "Welcome to choose Shiftux, OTP: 1234";
-        String sender = "pranithdutta26@gmail.com";//change accordingly  
-        String appPassword = "vnyybiizqhvpfymf"; //change accordingly
+        String sender = "your email";//change accordingly  
+        String appPassword = "your app password"; //change accordingly
 
         //Set the Properties
         Properties properties = new Properties();
