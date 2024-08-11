@@ -7,12 +7,12 @@
  *
  * @author User
  */
-public class Welcome extends javax.swing.JFrame {
+public class Verified extends javax.swing.JFrame {
 
     /**
-     * Creates new form Welcome
+     * Creates new form Verified
      */
-    public Welcome() {
+    public Verified() {
         initComponents();
     }
 
@@ -26,25 +26,18 @@ public class Welcome extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HOME");
+        setTitle("VERIFICATION COMPLETE");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setName(""); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Consolas", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
-        jLabel1.setText("LOGGED IN SUCCESSFULLY");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(260, 240, 270, 22);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -57,12 +50,13 @@ public class Welcome extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 800, 100);
+        jLabel1.setFont(new java.awt.Font("Consolas", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel1.setText("VERIFIED SUCCESSFULLY");
 
         btnOK.setBackground(new java.awt.Color(0, 102, 102));
         btnOK.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnOK.setForeground(new java.awt.Color(204, 255, 255));
+        btnOK.setForeground(new java.awt.Color(255, 255, 255));
         btnOK.setText("OK");
         btnOK.setFocusable(false);
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -70,8 +64,34 @@ public class Welcome extends javax.swing.JFrame {
                 btnOKActionPerformed(evt);
             }
         });
-        jPanel1.add(btnOK);
-        btnOK.setBounds(350, 280, 76, 30);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(339, 339, 339)
+                        .addComponent(btnOK)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140)
+                .addComponent(jLabel1)
+                .addGap(56, 56, 56)
+                .addComponent(btnOK)
+                .addGap(0, 154, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,10 +109,10 @@ public class Welcome extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
-        Home homeFrame = new Home();
-        homeFrame.setVisible(true);
-        homeFrame.pack();
-        homeFrame.setLocationRelativeTo(null);
+        SignIn signInFrame = new SignIn();
+        signInFrame.setVisible(true);
+        signInFrame.pack();
+        signInFrame.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnOKActionPerformed
 
@@ -113,20 +133,20 @@ public class Welcome extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Verified.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Verified.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Verified.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Welcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(Verified.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new Welcome().setVisible(true);
+//                new Verified().setVisible(true);
 //            }
 //        });
 //    }
