@@ -263,8 +263,8 @@ public class SignUp extends javax.swing.JFrame {
 
     private String otpSend(String email) {
         String subject = "Warmth";
-        //generate otp
-        String text = "Welcome to choose Shiftux, OTP: 1234";
+        long otp = (int)(Math.random()*900000) + 100000;
+        String text = "Welcome to choose Shiftux, OTP: "+otp;
         String sender = "your email";//change accordingly  
         String appPassword = "your app password"; //change accordingly
 
@@ -297,7 +297,7 @@ public class SignUp extends javax.swing.JFrame {
         } catch(Exception e) {
             System.out.println(e);
         }
-        return "1234";
+        return otp+"";
     }
     
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed

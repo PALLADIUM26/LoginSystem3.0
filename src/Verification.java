@@ -1,5 +1,11 @@
 import java.sql.*;
 import javax.swing.JOptionPane;
+import java.util.*; 
+import javax.mail.*; 
+import javax.mail.internet.*; 
+import javax.activation.*; 
+import javax.mail.Session; 
+import javax.mail.Transport; 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -42,6 +48,8 @@ public class Verification extends javax.swing.JFrame {
         tfOTP = new javax.swing.JTextField();
         btnReg = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnResend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VERIFY");
@@ -111,33 +119,56 @@ public class Verification extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Did not receive Email...");
+
+        btnResend.setBackground(new java.awt.Color(0, 0, 0));
+        btnResend.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnResend.setForeground(new java.awt.Color(153, 255, 255));
+        btnResend.setText("Resend");
+        btnResend.setFocusable(false);
+        btnResend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResendActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReg))
-                    .addComponent(jLabel1)
-                    .addComponent(tfOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnResend)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(tfOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnReg)))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
+                .addGap(141, 141, 141)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfOTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReg)
-                    .addComponent(btnBack))
-                .addContainerGap(152, Short.MAX_VALUE))
+                    .addComponent(btnBack)
+                    .addComponent(btnReg))
+                .addGap(142, 142, 142)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnResend)
+                .addGap(77, 77, 77))
         );
 
         jPanel1.add(jPanel3);
@@ -171,7 +202,7 @@ public class Verification extends javax.swing.JFrame {
 
             int flag = 0;
             while(result.next()) {
-                if (result.getString("uname").equals(uname)){
+                if (result.getString("uname").equals(uname) || result.getString("email").equals(email)){
                     flag = 1;
                     break;
                 }
@@ -219,6 +250,46 @@ public class Verification extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnResendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResendActionPerformed
+        // TODO add your handling code here:
+        String subject = "Warmth";
+        long otp = (int)(Math.random()*900000) + 100000;
+        String text = "Welcome to choose Shiftux, OTP: "+otp;
+        String sender = "your email";//change accordingly  
+        String appPassword = "your app password"; //change accordingly
+
+        //Set the Properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        
+        Authenticator auth = new Authenticator() {
+            public PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(sender, appPassword);
+            }
+        };
+        
+        Session session = Session.getInstance(properties, auth);
+        
+        //compose the message 
+        try {
+            MimeMessage message = new MimeMessage(session);  
+            message.setFrom(new InternetAddress(sender));
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
+            message.setSubject(subject);
+            message.setText(text);
+            
+            // Send message 
+            Transport.send(message);
+            System.out.println("Mail successfully sent");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        ogOTP = otp+"";
+    }//GEN-LAST:event_btnResendActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,8 +328,10 @@ public class Verification extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReg;
+    private javax.swing.JButton btnResend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
