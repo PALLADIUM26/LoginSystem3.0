@@ -283,6 +283,35 @@ public class Sylvia extends javax.swing.JFrame {
         clpbrd.setContents (stringSelection, null);
     }//GEN-LAST:event_btnCopyActionPerformed
 
+    private String decimal_other(String input, int base2) {
+        String result = "";
+        while (Integer.parseInt(input) != 0) {
+            int remainder = (Integer.parseInt(input))%base2;
+            if (remainder < 10) result = remainder + result;
+            else result = (char)(remainder+55) + result;
+            input = "" + Integer.parseInt(input)/base2;
+        }
+        return result;
+    }
+    
+    private String other_decimal(String input, int base1) {
+        int power = 0, len = input.length(), r = 0;
+        char dig;
+        String result = "";
+        
+        for (int i=len-1; i>-1; i--) {
+            dig = input.charAt(i);
+            if (Character.isDigit(dig)) {
+                r = r + (dig - '0')*(int)(Math.pow(base1, power));
+            } else {
+                r = r + (dig - 55)*(int)(Math.pow(base1, power));
+            }
+            power++;
+        }
+        result = r + "";
+        return result;
+    }
+    
     private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
         // TODO add your handling code here:
         String input = tfInput.getText();   
@@ -297,19 +326,9 @@ public class Sylvia extends javax.swing.JFrame {
             } else {
                 String result = "";
                 if (base1 == 10) { //decimal to other
-                    while (Integer.parseInt(input) != 0) {
-                        result = (Integer.parseInt(input))%base2 + result;
-                        input = "" + Integer.parseInt(input)/base2;
-                    }
+                    result = decimal_other(input, (int)base2);
                 } else if (base2 == 10) { //other to decimal
-                    int power = 0;
-                    int r = 0;
-                    while (Integer.parseInt(input) != 0) {
-                        r = r + ((Integer.parseInt(input))%10)*(int)(Math.pow(base1, power));
-                        result = r + "";
-                        input = ""+Integer.parseInt(input)/10;
-                        power++;
-                    }
+                    result = other_decimal(input, (int)base1);
                 }// else if (base1 == 2 && base2 == 8)
                 // else if (base1 == 8 && base2 == 2)
                 // else if (base1 == 2 && base2 == 16)
