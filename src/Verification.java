@@ -30,6 +30,13 @@ public class Verification extends javax.swing.JFrame {
         password = pwd;
         initComponents();
     }
+    
+    public Verification(String e, String otp) {
+        ogOTP = otp;
+        email = e;
+        password = "";
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +53,7 @@ public class Verification extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfOTP = new javax.swing.JTextField();
-        btnReg = new javax.swing.JButton();
+        btnContinue = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnResend = new javax.swing.JButton();
@@ -97,19 +104,19 @@ public class Verification extends javax.swing.JFrame {
         tfOTP.setForeground(new java.awt.Color(153, 255, 255));
         tfOTP.setCaretColor(new java.awt.Color(153, 255, 255));
 
-        btnReg.setBackground(new java.awt.Color(0, 0, 0));
-        btnReg.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
-        btnReg.setForeground(new java.awt.Color(153, 255, 255));
-        btnReg.setText("Sign Up");
-        btnReg.setFocusable(false);
-        btnReg.addActionListener(new java.awt.event.ActionListener() {
+        btnContinue.setBackground(new java.awt.Color(0, 0, 0));
+        btnContinue.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnContinue.setForeground(new java.awt.Color(153, 255, 255));
+        btnContinue.setText("Continue");
+        btnContinue.setFocusable(false);
+        btnContinue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegActionPerformed(evt);
+                btnContinueActionPerformed(evt);
             }
         });
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
-        btnBack.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(153, 255, 255));
         btnBack.setText("Back");
         btnBack.setFocusable(false);
@@ -150,7 +157,7 @@ public class Verification extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btnBack)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnReg)))))
+                                .addComponent(btnContinue)))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -163,7 +170,7 @@ public class Verification extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
-                    .addComponent(btnReg))
+                    .addComponent(btnContinue))
                 .addGap(142, 142, 142)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,7 +195,7 @@ public class Verification extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+//    private void 
     
     private void workingWithMySQL() {
         try {
@@ -230,16 +237,32 @@ public class Verification extends javax.swing.JFrame {
         }
     }
     
-    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+    private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
         // TODO add your handling code here:
 //        String ogOTP = otpSend();
         String otp = tfOTP.getText();
-        if (otp.equals(ogOTP)) {
-            workingWithMySQL();
+        if (password.isEmpty()) {
+            if (otp.equals(ogOTP)) {
+                //reset password
+                Welcome welcomeFrame = new Welcome();
+                welcomeFrame.setVisible(true);
+                welcomeFrame.pack();
+                welcomeFrame.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Wrong OTP", "Try Again", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Wrong OTP", "Try Again", JOptionPane.ERROR_MESSAGE);
+            if (otp.equals(ogOTP)) {
+                workingWithMySQL();
+            } else {
+                JOptionPane.showMessageDialog(this, "Wrong OTP", "Try Again", JOptionPane.ERROR_MESSAGE);
+            }
         }
-    }//GEN-LAST:event_btnRegActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_btnContinueActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -327,7 +350,7 @@ public class Verification extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnReg;
+    private javax.swing.JButton btnContinue;
     private javax.swing.JButton btnResend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

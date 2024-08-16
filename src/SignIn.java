@@ -1,4 +1,9 @@
-
+import java.util.*; 
+import javax.mail.*; 
+import javax.mail.internet.*; 
+import javax.activation.*; 
+import javax.mail.Session; 
+import javax.mail.Transport;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -187,6 +192,11 @@ public class SignIn extends javax.swing.JFrame {
         btnForgot.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnForgot.setForeground(new java.awt.Color(255, 255, 255));
         btnForgot.setText("Send Code");
+        btnForgot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgotActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 255, 255));
@@ -275,6 +285,45 @@ public class SignIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private String otpSend(String email) {
+        String subject = "Warmth";
+        long otp = (int)(Math.random()*900000) + 100000;
+        String text = "Welcome to choose Shiftux, OTP: "+otp;
+        String sender = "your email";//change accordingly  
+        String appPassword = "your app password"; //change accordingly
+
+        //Set the Properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        
+        Authenticator auth = new Authenticator() {
+            public PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(sender, appPassword);
+            }
+        };
+        
+        Session session = Session.getInstance(properties, auth);
+        
+        //compose the message 
+        try {
+            MimeMessage message = new MimeMessage(session);  
+            message.setFrom(new InternetAddress(sender));
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
+            message.setSubject(subject);
+            message.setText(text);
+            
+            // Send message 
+            Transport.send(message);
+            System.out.println("Mail successfully sent");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return otp+"";
+    }
+    
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         SignUp signUpFrame = new SignUp();
@@ -352,6 +401,23 @@ public class SignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         tfId.setEditable(true);
     }//GEN-LAST:event_btnEmailActionPerformed
+
+    private void btnForgotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotActionPerformed
+        // TODO add your handling code here:
+        String id = tfId.getText();
+        String password = String.valueOf(tfPassword.getPassword());
+        
+        if(id.isEmpty() || btnUsername.isSelected() == true){
+            JOptionPane.showMessageDialog(this, "Please enter Email", "Try Again", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String ogOTP = otpSend(id);
+            Verification verificationFrame = new Verification(id, ogOTP);
+            verificationFrame.setVisible(true);
+            verificationFrame.pack();
+            verificationFrame.setLocationRelativeTo(null);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnForgotActionPerformed
 
     /**
      * @param args the command line arguments
