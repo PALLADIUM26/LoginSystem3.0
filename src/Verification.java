@@ -266,11 +266,19 @@ public class Verification extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        SignUp signUpFrame = new SignUp();
-        signUpFrame.setVisible(true);
-        signUpFrame.pack();
-        signUpFrame.setLocationRelativeTo(null);
-        this.dispose();
+        if (!password.isEmpty()) {
+            SignUp signUpFrame = new SignUp();
+            signUpFrame.setVisible(true);
+            signUpFrame.pack();
+            signUpFrame.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+            Welcome welcomeFrame = new Welcome();
+            welcomeFrame.setVisible(true);
+            welcomeFrame.pack();
+            welcomeFrame.setLocationRelativeTo(null);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnResendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResendActionPerformed
