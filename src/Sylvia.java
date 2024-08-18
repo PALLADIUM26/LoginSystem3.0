@@ -285,30 +285,84 @@ public class Sylvia extends javax.swing.JFrame {
 
     private String decimal_other(String input, int base2) {
         String result = "";
-        while (Integer.parseInt(input) != 0) {
-            int remainder = (Integer.parseInt(input))%base2;
-            if (remainder < 10) result = remainder + result;
-            else result = (char)(remainder+55) + result;
-            input = "" + Integer.parseInt(input)/base2;
+        int point = input.indexOf(".");
+        
+        if (point == -1) {
+            while (Integer.parseInt(input) != 0) {
+                int remainder = (Integer.parseInt(input))%base2;
+                if (remainder < 10) result = remainder + result;
+                else result = (char)(remainder+55) + result;
+                input = "" + Integer.parseInt(input)/base2;
+            }
+        } else {
+            double inp = Double.parseDouble(input) - Integer.parseInt(input.substring(0,point));
+//            System.out.println(inp);
+            String integer = input.substring(0,point);
+            String fraction = input.substring(point+1);
+            
+            while (Integer.parseInt(integer) != 0) {
+                int remainder = (Integer.parseInt(integer))%base2;
+                if (remainder < 10) result = remainder + result;
+                else result = (char)(remainder+55) + result;
+                integer = "" + Integer.parseInt(integer)/base2;
+            }
+            result = result + ".";
+            for (int i=0; i<21; i++) {
+                inp *= base2;
+                result = result + (int)inp;
+                inp -= (int)inp;
+            }
         }
         return result;
     }
     
     private String other_decimal(String input, int base1) {
-        int power = 0, len = input.length(), r = 0;
+        int power = 0, len = input.length();
+        double r = 0.0;
         char dig;
         String result = "";
+        int point = input.indexOf(".");
         
-        for (int i=len-1; i>-1; i--) {
-            dig = input.charAt(i);
-            if (Character.isDigit(dig)) {
-                r = r + (dig - '0')*(int)(Math.pow(base1, power));
-            } else {
-                r = r + (dig - 55)*(int)(Math.pow(base1, power));
+        if (point == -1) {
+            for (int i=len-1; i>-1; i--) {
+                dig = input.charAt(i);
+                if (Character.isDigit(dig)) {
+                    r = r + (dig - '0')*(int)(Math.pow(base1, power));
+                } else {
+                    r = r + (dig - 55)*(int)(Math.pow(base1, power));
+                }
+                power++;
             }
-            power++;
+            result = (int)r + "";
+        } else {
+            String integer = input.substring(0,point);
+            String fraction = input.substring(point+1);
+            int len1 = integer.length();
+            int len2 = fraction.length();
+            
+            for (int i=len1-1; i>-1; i--) {
+                dig = integer.charAt(i);
+                if (Character.isDigit(dig)) {
+                    r = r + (dig - '0')*(int)(Math.pow(base1, power));
+                } else {
+                    r = r + (dig - 55)*(int)(Math.pow(base1, power));
+                }
+                power++;
+            }
+            power = 1;
+            for (int i=1; i<=len2; i++) {
+                dig = fraction.charAt(i-1);
+                System.out.println(dig);
+                if (Character.isDigit(dig)) {
+                    r = r + (dig - '0')/Math.pow(base1, i);
+                } else {
+                    r = r + (dig - 55)/Math.pow(base1, i);
+                }
+                power++;
+            }
+            result += r;
         }
-        result = r + "";
+        
         return result;
     }
     
