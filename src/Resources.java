@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 import java.sql.*;
 import java.util.*; 
 import javax.mail.*; 
@@ -9,19 +5,14 @@ import javax.mail.internet.*;
 import javax.activation.*; 
 import javax.mail.Session; 
 import javax.mail.Transport; 
-//import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class Resources {
     public String otpSend(String email) {
         String subject = "Warmth";
         long otp = (int)(Math.random()*900000) + 100000;
         String text = "Welcome to choose Shiftux, OTP: "+otp;
-        String sender = "pranithdutta26@gmail.com";//change accordingly  
-        String appPassword = "cxqbksqtaxxgqhsj"; //change accordingly
+        String sender = "your email";//change accordingly  
+        String appPassword = "your app password"; //change accordingly
 
         //Set the Properties
         Properties properties = new Properties();
@@ -108,16 +99,40 @@ public class Resources {
                     break;
                 }
             }
-
+            
             con.close();
-
             return flag;
-
-
-
+            
         } catch(Exception e) {
             e.printStackTrace();
             return -1;
         }
+    }
+    
+    public int workingWithMySQL(String input, String base1, String base2, String output) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+//            s.executeUpdate("INSERT INTO data VALUES(?, ?, ?, ?);");
+//            String query = "INSERT INTO data VALUES(?, ?, ?, ?);";
+            String query = "INSERT INTO dataValues VALUES('"+input+"','"+base1+"','"+base2+"','"+output+"')";
+            s.executeUpdate(query);
+            con.close();
+            
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setString(1, input);
+//            ps.setString(2, base1); //setInt()
+//            ps.setString(3, base2);
+//            ps.setString(4, output);
+//            ps.addBatch();
+            
+            System.out.println("Update executed Successfully!");
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return 0;
     }
 }
