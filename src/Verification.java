@@ -1,11 +1,11 @@
-import java.sql.*;
+//import java.sql.*;
 import javax.swing.JOptionPane;
-import java.util.*; 
-import javax.mail.*; 
-import javax.mail.internet.*; 
-import javax.activation.*; 
-import javax.mail.Session; 
-import javax.mail.Transport; 
+//import java.util.*; 
+//import javax.mail.*; 
+//import javax.mail.internet.*; 
+//import javax.activation.*; 
+//import javax.mail.Session; 
+//import javax.mail.Transport; 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -195,51 +195,48 @@ public class Verification extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-//    private void 
-    
-    private void workingWithMySQL() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
-            Statement s = con.createStatement();
-            System.out.println("Connection extablished Successfully!");
-
-            String check = "select * from users;";
-            ResultSet result = s.executeQuery(check);
-
-            int flag = 0;
-            while(result.next()) {
-                if (result.getString("uname").equals(uname) || result.getString("email").equals(email)){
-                    flag = 1;
-                    break;
-                }
-            }
-
-            if (flag == 0){
-                String query = "INSERT INTO users VALUES('"+uname+"','"+email+"','"+password+"')";
-                s.executeUpdate(query);
-                System.out.println("Data Inserted Successfully!");
-
-                // redirect
-                Verified verifiedFrame = new Verified();
-                verifiedFrame.setVisible(true);
-                verifiedFrame.pack();
-                verifiedFrame.setLocationRelativeTo(null);
-                this.dispose();
-                
-            } else {
-                JOptionPane.showMessageDialog(this, "User already exists", "Try Again", JOptionPane.ERROR_MESSAGE);
-            }
-            con.close();
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void workingWithMySQL() {
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+//            Statement s = con.createStatement();
+//            System.out.println("Connection extablished Successfully!");
+//
+//            String check = "select * from users;";
+//            ResultSet result = s.executeQuery(check);
+//
+//            int flag = 0;
+//            while(result.next()) {
+//                if (result.getString("uname").equals(uname) || result.getString("email").equals(email)){
+//                    flag = 1;
+//                    break;
+//                }
+//            }
+//
+//            if (flag == 0){
+//                String query = "INSERT INTO users VALUES('"+uname+"','"+email+"','"+password+"')";
+//                s.executeUpdate(query);
+//                System.out.println("Data Inserted Successfully!");
+//
+//                // redirect
+//                Verified verifiedFrame = new Verified();
+//                verifiedFrame.setVisible(true);
+//                verifiedFrame.pack();
+//                verifiedFrame.setLocationRelativeTo(null);
+//                this.dispose();
+//                
+//            } else {
+//                JOptionPane.showMessageDialog(this, "User already exists", "Try Again", JOptionPane.ERROR_MESSAGE);
+//            }
+//            con.close();
+//
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     
     private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinueActionPerformed
         // TODO add your handling code here:
-//        String ogOTP = otpSend();
         String otp = tfOTP.getText();
         if (password.isEmpty()) {
             if (otp.equals(ogOTP)) {
@@ -254,7 +251,20 @@ public class Verification extends javax.swing.JFrame {
             }
         } else {
             if (otp.equals(ogOTP)) {
-                workingWithMySQL();
+                Resources rec = new Resources();
+                int flag = rec.workingWithMySQL(uname, email, password);
+                if (flag == 0){
+                    // redirect
+                    Verified verifiedFrame = new Verified();
+                    verifiedFrame.setVisible(true);
+                    verifiedFrame.pack();
+                    verifiedFrame.setLocationRelativeTo(null);
+                    this.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "User already exists", "Try Again", JOptionPane.ERROR_MESSAGE);
+                }
+//                workingWithMySQL();
             } else {
                 JOptionPane.showMessageDialog(this, "Wrong OTP", "Try Again", JOptionPane.ERROR_MESSAGE);
             }
@@ -283,42 +293,44 @@ public class Verification extends javax.swing.JFrame {
 
     private void btnResendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResendActionPerformed
         // TODO add your handling code here:
-        String subject = "Warmth";
-        long otp = (int)(Math.random()*900000) + 100000;
-        String text = "Welcome to choose Shiftux, OTP: "+otp;
-        String sender = "your email";//change accordingly  
-        String appPassword = "your app password"; //change accordingly
-
-        //Set the Properties
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        
-        Authenticator auth = new Authenticator() {
-            public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(sender, appPassword);
-            }
-        };
-        
-        Session session = Session.getInstance(properties, auth);
-        
-        //compose the message 
-        try {
-            MimeMessage message = new MimeMessage(session);  
-            message.setFrom(new InternetAddress(sender));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
-            message.setSubject(subject);
-            message.setText(text);
-            
-            // Send message 
-            Transport.send(message);
-            System.out.println("Mail successfully sent");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        ogOTP = otp+"";
+        Resources rec = new Resources();
+        String ogOTP = rec.otpSend(email);
+//        String subject = "Warmth";
+//        long otp = (int)(Math.random()*900000) + 100000;
+//        String text = "Welcome to choose Shiftux, OTP: "+otp;
+//        String sender = "your email";//change accordingly  
+//        String appPassword = "your app password"; //change accordingly
+//
+//        //Set the Properties
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "587");
+//        
+//        Authenticator auth = new Authenticator() {
+//            public PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(sender, appPassword);
+//            }
+//        };
+//        
+//        Session session = Session.getInstance(properties, auth);
+//        
+//        //compose the message 
+//        try {
+//            MimeMessage message = new MimeMessage(session);  
+//            message.setFrom(new InternetAddress(sender));
+//            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
+//            message.setSubject(subject);
+//            message.setText(text);
+//            
+//            // Send message 
+//            Transport.send(message);
+//            System.out.println("Mail successfully sent");
+//        } catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        ogOTP = otp+"";
     }//GEN-LAST:event_btnResendActionPerformed
 
     /**

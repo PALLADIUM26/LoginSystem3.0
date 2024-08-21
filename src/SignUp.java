@@ -1,9 +1,9 @@
-import java.util.*; 
-import javax.mail.*; 
-import javax.mail.internet.*; 
-import javax.activation.*; 
-import javax.mail.Session; 
-import javax.mail.Transport; 
+//import java.util.*; 
+//import javax.mail.*; 
+//import javax.mail.internet.*; 
+//import javax.activation.*; 
+//import javax.mail.Session; 
+//import javax.mail.Transport; 
 import javax.swing.JOptionPane;
 
 /*
@@ -261,44 +261,44 @@ public class SignUp extends javax.swing.JFrame {
         tfPassword2.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private String otpSend(String email) {
-        String subject = "Warmth";
-        long otp = (int)(Math.random()*900000) + 100000;
-        String text = "Welcome to choose Shiftux, OTP: "+otp;
-        String sender = "your email";//change accordingly  
-        String appPassword = "your app password"; //change accordingly
-
-        //Set the Properties
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        
-        Authenticator auth = new Authenticator() {
-            public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(sender, appPassword);
-            }
-        };
-        
-        Session session = Session.getInstance(properties, auth);
-        
-        //compose the message 
-        try {
-            MimeMessage message = new MimeMessage(session);  
-            message.setFrom(new InternetAddress(sender));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
-            message.setSubject(subject);
-            message.setText(text);
-            
-            // Send message 
-            Transport.send(message);
-            System.out.println("Mail successfully sent");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        return otp+"";
-    }
+//    private String otpSend(String email) {
+//        String subject = "Warmth";
+//        long otp = (int)(Math.random()*900000) + 100000;
+//        String text = "Welcome to choose Shiftux, OTP: "+otp;
+//        String sender = "your email";//change accordingly  
+//        String appPassword = "your app password"; //change accordingly
+//
+//        //Set the Properties
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "587");
+//        
+//        Authenticator auth = new Authenticator() {
+//            public PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(sender, appPassword);
+//            }
+//        };
+//        
+//        Session session = Session.getInstance(properties, auth);
+//        
+//        //compose the message 
+//        try {
+//            MimeMessage message = new MimeMessage(session);  
+//            message.setFrom(new InternetAddress(sender));
+//            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
+//            message.setSubject(subject);
+//            message.setText(text);
+//            
+//            // Send message 
+//            Transport.send(message);
+//            System.out.println("Mail successfully sent");
+//        } catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        return otp+"";
+//    }
     
     private void btnVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifyActionPerformed
         // TODO add your handling code here:
@@ -312,7 +312,9 @@ public class SignUp extends javax.swing.JFrame {
         } else if(!password1.equals(password2)){
             JOptionPane.showMessageDialog(this, "Passwords Not Matching", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
-            String ogOTP = otpSend(email);
+            Resources rec = new Resources();
+            String ogOTP = rec.otpSend(email);
+//            String ogOTP = otpSend(email);
             Verification verificationFrame = new Verification(username, email, password1, ogOTP);
             verificationFrame.setVisible(true);
             verificationFrame.pack();

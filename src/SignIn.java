@@ -1,9 +1,9 @@
-import java.util.*; 
-import javax.mail.*; 
-import javax.mail.internet.*; 
-import javax.activation.*; 
-import javax.mail.Session; 
-import javax.mail.Transport;
+//import java.util.*; 
+//import javax.mail.*; 
+//import javax.mail.internet.*; 
+//import javax.activation.*; 
+//import javax.mail.Session; 
+//import javax.mail.Transport;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -286,44 +286,44 @@ public class SignIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private String otpSend(String email) {
-        String subject = "Warmth";
-        long otp = (int)(Math.random()*900000) + 100000;
-        String text = "Welcome to choose Shiftux, OTP: "+otp;
-        String sender = "your email";//change accordingly  
-        String appPassword = "your app password"; //change accordingly
-
-        //Set the Properties
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        
-        Authenticator auth = new Authenticator() {
-            public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(sender, appPassword);
-            }
-        };
-        
-        Session session = Session.getInstance(properties, auth);
-        
-        //compose the message 
-        try {
-            MimeMessage message = new MimeMessage(session);  
-            message.setFrom(new InternetAddress(sender));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
-            message.setSubject(subject);
-            message.setText(text);
-            
-            // Send message 
-            Transport.send(message);
-            System.out.println("Mail successfully sent");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        return otp+"";
-    }
+//    private String otpSend(String email) {
+//        String subject = "Warmth";
+//        long otp = (int)(Math.random()*900000) + 100000;
+//        String text = "Welcome to choose Shiftux, OTP: "+otp;
+//        String sender = "your email";//change accordingly  
+//        String appPassword = "your app password"; //change accordingly
+//
+//        //Set the Properties
+//        Properties properties = new Properties();
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.smtp.host", "smtp.gmail.com");
+//        properties.put("mail.smtp.port", "587");
+//        
+//        Authenticator auth = new Authenticator() {
+//            public PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(sender, appPassword);
+//            }
+//        };
+//        
+//        Session session = Session.getInstance(properties, auth);
+//        
+//        //compose the message 
+//        try {
+//            MimeMessage message = new MimeMessage(session);  
+//            message.setFrom(new InternetAddress(sender));
+//            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
+//            message.setSubject(subject);
+//            message.setText(text);
+//            
+//            // Send message 
+//            Transport.send(message);
+//            System.out.println("Mail successfully sent");
+//        } catch(Exception e) {
+//            System.out.println(e);
+//        }
+//        return otp+"";
+//    }
     
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
@@ -355,41 +355,52 @@ public class SignIn extends javax.swing.JFrame {
         if(id.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter all fields", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
-            try {                
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
-                Statement s = con.createStatement();
-                System.out.println("Connection extablished Successfully!");
-                String query = "";
-                
-                if (x == 0) query = "select * from users where uname='"+id+"';";
-                else if (x == 1) query = "select * from users where email='"+id+"';";
-                ResultSet result = s.executeQuery(query);
-                System.out.println("Data Fetched Successfully!");
-                
-                int flag = -1;
-                while(result.next()) {
-                    if ((result.getString("uname").equals(id) && result.getString("password").equals(password)) || (result.getString("email").equals(id) && result.getString("password").equals(password))){
-                        flag = 1;
-                        break;
-                    }
-                }
-                
-                con.close();
-                                
-                if (flag != -1) {
-                    Welcome welcomeFrame = new Welcome();
-                    welcomeFrame.setVisible(true);
-                    welcomeFrame.pack();
-                    welcomeFrame.setLocationRelativeTo(null);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Enter Correct credentials", "Invalid User", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } catch(Exception e) {
-                e.printStackTrace();
+            Resources rec = new Resources();
+            int flag = rec.workingWithMySQL(x, id, password);
+            if (flag != -1) {
+                Welcome welcomeFrame = new Welcome();
+                welcomeFrame.setVisible(true);
+                welcomeFrame.pack();
+                welcomeFrame.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Enter Correct credentials", "Invalid User", JOptionPane.ERROR_MESSAGE);
             }
+//            try {                
+//                Class.forName("com.mysql.cj.jdbc.Driver");
+//                Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+//                Statement s = con.createStatement();
+//                System.out.println("Connection extablished Successfully!");
+//                String query = "";
+//                
+//                if (x == 0) query = "select * from users where uname='"+id+"';";
+//                else if (x == 1) query = "select * from users where email='"+id+"';";
+//                ResultSet result = s.executeQuery(query);
+//                System.out.println("Data Fetched Successfully!");
+//                
+//                int flag = -1;
+//                while(result.next()) {
+//                    if ((result.getString("uname").equals(id) && result.getString("password").equals(password)) || (result.getString("email").equals(id) && result.getString("password").equals(password))){
+//                        flag = 1;
+//                        break;
+//                    }
+//                }
+//                
+//                con.close();
+//                                
+//                if (flag != -1) {
+//                    Welcome welcomeFrame = new Welcome();
+//                    welcomeFrame.setVisible(true);
+//                    welcomeFrame.pack();
+//                    welcomeFrame.setLocationRelativeTo(null);
+//                    this.dispose();
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Enter Correct credentials", "Invalid User", JOptionPane.ERROR_MESSAGE);
+//                }
+//
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 
@@ -411,7 +422,9 @@ public class SignIn extends javax.swing.JFrame {
         if(id.isEmpty() || btnUsername.isSelected() == true){
             JOptionPane.showMessageDialog(this, "Please enter Email", "Try Again", JOptionPane.ERROR_MESSAGE);
         } else {
-            String ogOTP = otpSend(id);
+//            String ogOTP = otpSend(id);
+            Resources rec = new Resources();
+            String ogOTP = rec.otpSend(id);
             Verification verificationFrame = new Verification(id, ogOTP);
             verificationFrame.setVisible(true);
             verificationFrame.pack();
