@@ -289,11 +289,19 @@ public class SignIn extends javax.swing.JFrame {
             Resources rec = new Resources();
             int flag = rec.workingWithMySQL(x, id, password);
             if (flag != -1) {
-                Welcome welcomeFrame = new Welcome();
-                welcomeFrame.setVisible(true);
-                welcomeFrame.pack();
-                welcomeFrame.setLocationRelativeTo(null);
-                this.dispose();
+                if (rec.workingWithMySQL(x, id) == 1) { //workingWithMySQL(id) for checking if character at 0th index is @
+                    AdminPanel adminPanelFrame = new AdminPanel();
+                    adminPanelFrame.setVisible(true);
+                    adminPanelFrame.pack();
+                    adminPanelFrame.setLocationRelativeTo(null);
+                    this.dispose();
+                } else {
+                    Welcome welcomeFrame = new Welcome();
+                    welcomeFrame.setVisible(true);
+                    welcomeFrame.pack();
+                    welcomeFrame.setLocationRelativeTo(null);
+                    this.dispose();
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Enter Correct credentials", "Invalid User", JOptionPane.ERROR_MESSAGE);
             }

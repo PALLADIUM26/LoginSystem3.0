@@ -46,7 +46,7 @@ public class Resources {
         return otp+"";
     }
     
-    public int workingWithMySQL(String uname, String email, String password) {
+    public int workingWithMySQL(String uname, String email, String password) { //during sign up
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String MySQL_password = System.getenv("MySQL_password");
@@ -80,7 +80,7 @@ public class Resources {
         }
     }
     
-    public int workingWithMySQL(int x, String id, String password) {
+    public int workingWithMySQL(int x, String id, String password) { //during sign in
         try {                
             Class.forName("com.mysql.cj.jdbc.Driver");
             String MySQL_password = System.getenv("MySQL_password");
@@ -111,7 +111,7 @@ public class Resources {
         }
     }
     
-    public int workingWithMySQL(String input, String base1, String base2, String output) {
+    public int workingWithMySQL(String input, String base1, String base2, String output) { //storing calc
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             String MySQL_password = System.getenv("MySQL_password");
@@ -137,5 +137,36 @@ public class Resources {
             System.out.println(e.toString());
         }
         return 0;
+    }
+    
+    public int workingWithMySQL(int x, String id) { // for checking if user is admin
+        int flag = 0;
+        try {                
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+            String query = "";
+
+            if (x == 0) query = "select * from users where uname='"+id+"';";
+            else if (x == 1) query = "select * from users where email='"+id+"';";
+            ResultSet result = s.executeQuery(query);
+            System.out.println("Data Fetched Successfully!");
+
+            while(result.next()) {
+                if (result.getString("uname").charAt(0) == '@'){
+                    flag = 1;
+                    break;
+                }
+            }
+            
+            con.close();
+            return flag;
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 }
