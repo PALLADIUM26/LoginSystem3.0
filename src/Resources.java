@@ -11,8 +11,8 @@ public class Resources {
         String subject = "Warmth";
         long otp = (int)(Math.random()*900000) + 100000;
         String text = "Welcome to choose Shiftux, OTP: "+otp;
-        String sender = "your email";//change accordingly  
-        String appPassword = "your app password"; //change accordingly
+        String sender = System.getenv("email_sender");
+        String appPassword = System.getenv("appPassword");
 
         //Set the Properties
         Properties properties = new Properties();
@@ -49,7 +49,8 @@ public class Resources {
     public int workingWithMySQL(String uname, String email, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
             Statement s = con.createStatement();
             System.out.println("Connection extablished Successfully!");
 
@@ -82,7 +83,8 @@ public class Resources {
     public int workingWithMySQL(int x, String id, String password) {
         try {                
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
             Statement s = con.createStatement();
             System.out.println("Connection extablished Successfully!");
             String query = "";
@@ -112,7 +114,8 @@ public class Resources {
     public int workingWithMySQL(String input, String base1, String base2, String output) {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", "lolwa");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
             Statement s = con.createStatement();
             System.out.println("Connection extablished Successfully!");
 //            s.executeUpdate("INSERT INTO data VALUES(?, ?, ?, ?);");
