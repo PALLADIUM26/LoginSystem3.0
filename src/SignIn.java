@@ -290,10 +290,10 @@ public class SignIn extends javax.swing.JFrame {
             int flag = rec.workingWithMySQL(x, id, password);
             if (flag != -1) {
                 if (rec.workingWithMySQL(x, id) == 1) { //workingWithMySQL(id) for checking if character at 0th index is @
-                    AdminPanel adminPanelFrame = new AdminPanel();
-                    adminPanelFrame.setVisible(true);
-                    adminPanelFrame.pack();
-                    adminPanelFrame.setLocationRelativeTo(null);
+                    AdminWelcome adminWelcomeFrame = new AdminWelcome();
+                    adminWelcomeFrame.setVisible(true);
+                    adminWelcomeFrame.pack();
+                    adminWelcomeFrame.setLocationRelativeTo(null);
                     this.dispose();
                 } else {
                     Welcome welcomeFrame = new Welcome();
