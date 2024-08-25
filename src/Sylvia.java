@@ -35,7 +35,7 @@ public class Sylvia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SYLVIA");
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
@@ -70,9 +70,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(tfOutput);
         tfOutput.setBounds(216, 311, 365, 25);
 
-        btnConvert.setBackground(new java.awt.Color(0, 102, 102));
+        btnConvert.setBackground(new java.awt.Color(0, 0, 0));
         btnConvert.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnConvert.setForeground(new java.awt.Color(255, 255, 255));
+        btnConvert.setForeground(new java.awt.Color(153, 255, 255));
         btnConvert.setText("Convert");
         btnConvert.setFocusable(false);
         btnConvert.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +83,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(btnConvert);
         btnConvert.setBounds(170, 380, 90, 28);
 
-        btnReset.setBackground(new java.awt.Color(0, 102, 102));
+        btnReset.setBackground(new java.awt.Color(0, 0, 0));
         btnReset.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setForeground(new java.awt.Color(153, 255, 255));
         btnReset.setText("Reset");
         btnReset.setFocusable(false);
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -96,9 +96,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(btnReset);
         btnReset.setBounds(510, 380, 76, 28);
 
-        btnCopy.setBackground(new java.awt.Color(0, 102, 102));
+        btnCopy.setBackground(new java.awt.Color(0, 0, 0));
         btnCopy.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnCopy.setForeground(new java.awt.Color(255, 255, 255));
+        btnCopy.setForeground(new java.awt.Color(153, 255, 255));
         btnCopy.setText("Copy");
         btnCopy.setFocusable(false);
         btnCopy.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +109,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(btnCopy);
         btnCopy.setBounds(350, 380, 76, 28);
 
-        btnSave.setBackground(new java.awt.Color(0, 102, 102));
+        btnSave.setBackground(new java.awt.Color(0, 0, 0));
         btnSave.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setForeground(new java.awt.Color(153, 255, 255));
         btnSave.setText("Save");
         btnSave.setFocusable(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -122,36 +122,40 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(btnSave);
         btnSave.setBounds(510, 430, 76, 28);
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Input");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(178, 157, 32, 15);
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Output");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(172, 316, 38, 15);
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Base 1");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(172, 216, 38, 15);
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Base 2");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(461, 213, 38, 20);
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
-        btnLogOut.setBackground(new java.awt.Color(0, 0, 0));
+        btnLogOut.setBackground(new java.awt.Color(0, 102, 102));
         btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnLogOut.setForeground(new java.awt.Color(153, 255, 255));
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
         btnLogOut.setText("Log Out");
         btnLogOut.setFocusable(false);
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -160,9 +164,9 @@ public class Sylvia extends javax.swing.JFrame {
             }
         });
 
-        btnHome.setBackground(new java.awt.Color(0, 0, 0));
+        btnHome.setBackground(new java.awt.Color(0, 102, 102));
         btnHome.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnHome.setForeground(new java.awt.Color(153, 255, 255));
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
         btnHome.setText("Home");
         btnHome.setFocusable(false);
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -195,9 +199,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 100);
 
-        btnWorking.setBackground(new java.awt.Color(0, 102, 102));
+        btnWorking.setBackground(new java.awt.Color(0, 0, 0));
         btnWorking.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnWorking.setForeground(new java.awt.Color(255, 255, 255));
+        btnWorking.setForeground(new java.awt.Color(153, 255, 255));
         btnWorking.setText("Working");
         btnWorking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,9 +211,9 @@ public class Sylvia extends javax.swing.JFrame {
         jPanel1.add(btnWorking);
         btnWorking.setBounds(170, 430, 90, 28);
 
-        btnSwap.setBackground(new java.awt.Color(0, 102, 102));
+        btnSwap.setBackground(new java.awt.Color(0, 0, 0));
         btnSwap.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnSwap.setForeground(new java.awt.Color(255, 255, 255));
+        btnSwap.setForeground(new java.awt.Color(153, 255, 255));
         btnSwap.setText("Swap");
         btnSwap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
