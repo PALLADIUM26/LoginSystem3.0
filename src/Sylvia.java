@@ -203,6 +203,7 @@ public class Sylvia extends javax.swing.JFrame {
         btnWorking.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnWorking.setForeground(new java.awt.Color(153, 255, 255));
         btnWorking.setText("Working");
+        btnWorking.setFocusable(false);
         btnWorking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWorkingActionPerformed(evt);
@@ -215,6 +216,7 @@ public class Sylvia extends javax.swing.JFrame {
         btnSwap.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnSwap.setForeground(new java.awt.Color(153, 255, 255));
         btnSwap.setText("Swap");
+        btnSwap.setFocusable(false);
         btnSwap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSwapActionPerformed(evt);
