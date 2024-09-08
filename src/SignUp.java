@@ -231,7 +231,7 @@ public class SignUp extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         tfUsername.setText("");
-        tfUsername.setText("");
+        tfEmail.setText("");
         tfPassword1.setText("");
         tfPassword2.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
