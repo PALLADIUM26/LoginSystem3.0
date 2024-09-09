@@ -29,8 +29,14 @@ public class ViewUsers extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -157,6 +163,7 @@ public class ViewUsers extends javax.swing.JFrame {
         );
 
         btnDelete.setText("Delete");
+        btnDelete.setFocusable(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -165,16 +172,20 @@ public class ViewUsers extends javax.swing.JFrame {
 
         tableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Username", "Email", "Password"
             }
         ));
         jScrollPane1.setViewportView(tableUsers);
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,9 +198,12 @@ public class ViewUsers extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -203,7 +217,9 @@ public class ViewUsers extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDelete)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDelete)
+                            .addComponent(btnUpdate))
                         .addGap(0, 7, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -264,13 +280,11 @@ public class ViewUsers extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No row is selected, Select a row", "Select row", JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) tableUsers.getModel();
-
             Vector<Vector> tableData = model.getDataVector();
-//            for (Vector i : tableData) {
-//                for (Vector i : tableData) {
-//                System.out.println(i);
-//            }
-            String uname = tableUsers.get(row);
+            
+            Vector<String> rowData = tableData.get(row);
+            String uname = rowData.get(0);
+            
             model.removeRow(row);
             
             Resources rec = new Resources();
@@ -278,11 +292,40 @@ public class ViewUsers extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Resources rec = new Resources();
+        Vector<Vector> tableData = rec.workingWithMySQL();
+        DefaultTableModel model = (DefaultTableModel) tableUsers.getModel();
+        for(int i=0; i<tableData.size(); i++){
+            Vector row = tableData.get(i);
+            model.addRow(new Object[]{row.get(0), row.get(1), row.get(2)});
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        int row = tableUsers.getSelectedRow();
+        
+        if(row < 0){
+            JOptionPane.showMessageDialog(this, "No row is selected, Select a row", "Select row", JOptionPane.ERROR_MESSAGE);
+        } else {
+            System.out.println("gotta");
+//            DefaultTableModel model = (DefaultTableModel) tableUsers.getModel();
+//            Vector<Vector> tableData = model.getDataVector();
+//            
+//            Vector<String> rowData = tableData.get(row);
+//            String uname = rowData.get(0);
+//            
+//            Resources rec = new Resources();
+//            rec.workingWithMySQL(uname);
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

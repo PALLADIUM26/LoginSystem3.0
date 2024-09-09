@@ -170,7 +170,7 @@ public class Resources {
         }
     }
     
-    public void workingWithMySQL(String uname) {
+    public void workingWithMySQL(String uname) { //delete user
         try {                
             Class.forName("com.mysql.cj.jdbc.Driver");
             String MySQL_password = System.getenv("MySQL_password");
@@ -179,15 +179,39 @@ public class Resources {
             System.out.println("Connection extablished Successfully!");
             String query = "";
             
-            query = "remove from users where uname='"+uname+"';";
-            
-//            ResultSet result = s.executeQuery(query);
-            s.executeQuery(query);
+            query = "delete from users where uname='"+uname+"';";
+            s.executeUpdate(query);
             System.out.println("Data Removed Successfully!");
             
             con.close();            
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public Vector workingWithMySQL() { //view user data
+        Vector<Vector> myVector = new Vector<>();
+        try {                
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+            String query = "select * from users;";
+            ResultSet result = s.executeQuery(query);
+                                   
+            while (result.next()) {
+                Vector v = new Vector<>();
+                v.add(result.getString(1));
+                v.add(result.getString(2));
+                v.add(result.getString(3));
+                System.out.println(v);
+                myVector.add(v);
+            }
+                        
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return myVector;
     }
 }
