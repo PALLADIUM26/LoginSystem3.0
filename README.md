@@ -7,7 +7,7 @@ This is a Java-ANT-based software, with simple GUI, developed as part of a proje
 - User Login
 - Password Encryption
 - Session Management
-- Admin Panel (implementation of CRUD is left)
+- Admin Panel (implementation of CRUD is under progress)
 - The OTP verification is done by SMTP
 
 ## Project Structure
