@@ -169,4 +169,25 @@ public class Resources {
             return -1;
         }
     }
+    
+    public void workingWithMySQL(String uname) {
+        try {                
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+            String query = "";
+            
+            query = "remove from users where uname='"+uname+"';";
+            
+//            ResultSet result = s.executeQuery(query);
+            s.executeQuery(query);
+            System.out.println("Data Removed Successfully!");
+            
+            con.close();            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
