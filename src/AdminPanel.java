@@ -13,11 +13,8 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnLogOut = new javax.swing.JButton();
         btnViewUser = new javax.swing.JButton();
-        btnUpdateUser = new javax.swing.JButton();
-        btnDeleteUser = new javax.swing.JButton();
         btnViewData = new javax.swing.JButton();
         btnAnalyzeData = new javax.swing.JButton();
-        btnDeleteData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ADMIN PANEL");
@@ -65,32 +62,17 @@ public class AdminPanel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnViewUser);
-        btnViewUser.setBounds(100, 160, 91, 27);
-
-        btnUpdateUser.setText("Update Users");
-        btnUpdateUser.setFocusable(false);
-        jPanel1.add(btnUpdateUser);
-        btnUpdateUser.setBounds(100, 230, 104, 27);
-
-        btnDeleteUser.setText("Delete Users");
-        btnDeleteUser.setFocusable(false);
-        jPanel1.add(btnDeleteUser);
-        btnDeleteUser.setBounds(100, 300, 100, 27);
+        btnViewUser.setBounds(100, 160, 130, 27);
 
         btnViewData.setText("View Data");
         btnViewData.setFocusable(false);
         jPanel1.add(btnViewData);
-        btnViewData.setBounds(430, 160, 88, 27);
+        btnViewData.setBounds(100, 300, 130, 27);
 
         btnAnalyzeData.setText("Analyze Data");
         btnAnalyzeData.setFocusable(false);
         jPanel1.add(btnAnalyzeData);
-        btnAnalyzeData.setBounds(430, 230, 104, 27);
-
-        btnDeleteData.setText("Delete Data");
-        btnDeleteData.setFocusable(false);
-        jPanel1.add(btnDeleteData);
-        btnDeleteData.setBounds(430, 310, 98, 27);
+        btnAnalyzeData.setBounds(100, 370, 130, 27);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,10 +108,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalyzeData;
-    private javax.swing.JButton btnDeleteData;
-    private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnUpdateUser;
     private javax.swing.JButton btnViewData;
     private javax.swing.JButton btnViewUser;
     private javax.swing.JPanel jPanel1;
