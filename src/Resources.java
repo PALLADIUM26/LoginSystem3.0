@@ -205,7 +205,7 @@ public class Resources {
                 v.add(result.getString(1));
                 v.add(result.getString(2));
                 v.add(result.getString(3));
-                System.out.println(v);
+//                System.out.println(v);
                 myVector.add(v);
             }
         } catch(Exception e) {
