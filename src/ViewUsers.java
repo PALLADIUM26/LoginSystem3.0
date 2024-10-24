@@ -181,6 +181,7 @@ public class ViewUsers extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableUsers);
 
         btnUpdate.setText("Update");
+        btnUpdate.setFocusable(false);
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -308,15 +309,16 @@ public class ViewUsers extends javax.swing.JFrame {
         if(row < 0){
             JOptionPane.showMessageDialog(this, "No row is selected, Select a row", "Select row", JOptionPane.ERROR_MESSAGE);
         } else {
-            System.out.println("gotta");
-//            DefaultTableModel model = (DefaultTableModel) tableUsers.getModel();
-//            Vector<Vector> tableData = model.getDataVector();
-//            
-//            Vector<String> rowData = tableData.get(row);
-//            String uname = rowData.get(0);
-//            
-//            Resources rec = new Resources();
-//            rec.workingWithMySQL(uname);
+            DefaultTableModel model = (DefaultTableModel) tableUsers.getModel();
+            Vector<Vector> tableData = model.getDataVector();
+            
+            Vector<String> rowData = tableData.get(row);
+            String uname = rowData.get(0);
+            String email = rowData.get(1);
+            String pwd = rowData.get(2);
+            
+            Resources rec = new Resources();
+            rec.workingWithMySQL(uname, email, pwd, 1);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
         

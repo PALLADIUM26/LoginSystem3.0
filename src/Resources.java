@@ -199,7 +199,7 @@ public class Resources {
             System.out.println("Connection extablished Successfully!");
             String query = "select * from users;";
             ResultSet result = s.executeQuery(query);
-                                   
+            
             while (result.next()) {
                 Vector v = new Vector<>();
                 v.add(result.getString(1));
@@ -208,10 +208,30 @@ public class Resources {
                 System.out.println(v);
                 myVector.add(v);
             }
-                        
         } catch(Exception e) {
             e.printStackTrace();
         }
         return myVector;
+    }
+    
+    public void workingWithMySQL(String uname, String email, String password, int update) { //update user
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String MySQL_password = System.getenv("MySQL_password");
+            Connection con = DriverManager.getConnection("jdbc:MySQL://localhost:3306/Sylvia", "root", MySQL_password);
+            Statement s = con.createStatement();
+            System.out.println("Connection extablished Successfully!");
+
+            if (update == 1) {
+                String query = "update users set email='"+email+"', password='"+password+"' where uname='"+uname+"'";
+                s.executeUpdate(query);
+                System.out.println("Data Updated Successfully!");
+            }
+            
+            con.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
