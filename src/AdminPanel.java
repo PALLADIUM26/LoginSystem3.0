@@ -67,12 +67,12 @@ public class AdminPanel extends javax.swing.JFrame {
         btnViewData.setText("View Data");
         btnViewData.setFocusable(false);
         jPanel1.add(btnViewData);
-        btnViewData.setBounds(100, 300, 130, 27);
+        btnViewData.setBounds(100, 230, 130, 27);
 
         btnAnalyzeData.setText("Analyze Data");
         btnAnalyzeData.setFocusable(false);
         jPanel1.add(btnAnalyzeData);
-        btnAnalyzeData.setBounds(100, 370, 130, 27);
+        btnAnalyzeData.setBounds(100, 300, 130, 27);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
