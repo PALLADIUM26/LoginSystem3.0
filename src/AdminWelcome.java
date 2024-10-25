@@ -17,11 +17,12 @@ public class AdminWelcome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WELCOME BOX");
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -38,9 +39,9 @@ public class AdminWelcome extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 100);
 
-        btnOK.setBackground(new java.awt.Color(255, 102, 51));
+        btnOK.setBackground(new java.awt.Color(0, 102, 102));
         btnOK.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        btnOK.setForeground(new java.awt.Color(102, 0, 102));
+        btnOK.setForeground(new java.awt.Color(255, 255, 255));
         btnOK.setText("OK");
         btnOK.setFocusable(false);
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -52,10 +53,10 @@ public class AdminWelcome extends javax.swing.JFrame {
         btnOK.setBounds(330, 380, 76, 28);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel1.setForeground(new java.awt.Color(204, 153, 255));
         jLabel1.setText("WELCOME ADMIN");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(290, 220, 140, 22);
+        jLabel1.setBounds(300, 240, 140, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

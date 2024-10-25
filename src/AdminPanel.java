@@ -19,13 +19,14 @@ public class AdminPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ADMIN PANEL");
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
+        btnLogOut.setBackground(new java.awt.Color(0, 102, 102));
         btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.setFocusable(false);
@@ -57,6 +58,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 100);
 
+        btnViewUser.setBackground(new java.awt.Color(0, 51, 102));
         btnViewUser.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnViewUser.setText("View Users");
         btnViewUser.setFocusable(false);
@@ -68,6 +70,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel1.add(btnViewUser);
         btnViewUser.setBounds(100, 160, 130, 28);
 
+        btnViewData.setBackground(new java.awt.Color(0, 51, 102));
         btnViewData.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnViewData.setText("View Data");
         btnViewData.setFocusable(false);
@@ -79,6 +82,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel1.add(btnViewData);
         btnViewData.setBounds(100, 230, 130, 28);
 
+        btnAnalyzeData.setBackground(new java.awt.Color(0, 51, 102));
         btnAnalyzeData.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnAnalyzeData.setText("Analyze Data");
         btnAnalyzeData.setFocusable(false);

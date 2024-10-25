@@ -39,12 +39,13 @@ public class ViewUsers extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
+        btnLogOut.setBackground(new java.awt.Color(0, 102, 102));
         btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.setFocusable(false);
@@ -101,7 +102,7 @@ public class ViewUsers extends javax.swing.JFrame {
         tfPassword.setForeground(new java.awt.Color(153, 255, 255));
         tfPassword.setCaretColor(new java.awt.Color(153, 255, 255));
 
-        btnReset.setBackground(new java.awt.Color(0, 102, 102));
+        btnReset.setBackground(new java.awt.Color(0, 51, 102));
         btnReset.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReset.setText("Reset");
@@ -112,7 +113,7 @@ public class ViewUsers extends javax.swing.JFrame {
             }
         });
 
-        btnInsert.setBackground(new java.awt.Color(0, 102, 102));
+        btnInsert.setBackground(new java.awt.Color(0, 51, 102));
         btnInsert.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnInsert.setForeground(new java.awt.Color(255, 255, 255));
         btnInsert.setText("Insert");
@@ -164,6 +165,7 @@ public class ViewUsers extends javax.swing.JFrame {
                 .addGap(83, 83, 83))
         );
 
+        btnDelete.setBackground(new java.awt.Color(0, 51, 102));
         btnDelete.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setFocusable(false);
@@ -183,6 +185,7 @@ public class ViewUsers extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableUsers);
 
+        btnUpdate.setBackground(new java.awt.Color(0, 51, 102));
         btnUpdate.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setFocusable(false);
