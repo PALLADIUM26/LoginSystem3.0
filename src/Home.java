@@ -11,6 +11,9 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSylvia = new javax.swing.JButton();
+        btnEM = new javax.swing.JButton();
+        btnTrans = new javax.swing.JButton();
+        btnTTT = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnLogOut = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
@@ -21,13 +24,10 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("hello there");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(320, 260, 120, 22);
 
         btnSylvia.setBackground(new java.awt.Color(0, 0, 0));
         btnSylvia.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -39,8 +39,39 @@ public class Home extends javax.swing.JFrame {
                 btnSylviaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSylvia);
-        btnSylvia.setBounds(70, 140, 90, 28);
+
+        btnEM.setBackground(new java.awt.Color(0, 0, 0));
+        btnEM.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnEM.setForeground(new java.awt.Color(153, 255, 255));
+        btnEM.setText("e-motion");
+        btnEM.setFocusable(false);
+        btnEM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEMActionPerformed(evt);
+            }
+        });
+
+        btnTrans.setBackground(new java.awt.Color(0, 0, 0));
+        btnTrans.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnTrans.setForeground(new java.awt.Color(153, 255, 255));
+        btnTrans.setText("translaTHOR");
+        btnTrans.setFocusable(false);
+        btnTrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransActionPerformed(evt);
+            }
+        });
+
+        btnTTT.setBackground(new java.awt.Color(0, 0, 0));
+        btnTTT.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnTTT.setForeground(new java.awt.Color(153, 255, 255));
+        btnTTT.setText("TicTacToe");
+        btnTTT.setFocusable(false);
+        btnTTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTTTActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
@@ -102,8 +133,38 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 800, 100);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTrans, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(btnEM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSylvia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTTT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(324, 324, 324)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(btnSylvia)
+                .addGap(36, 36, 36)
+                .addComponent(btnEM)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addComponent(btnTrans)
+                .addGap(40, 40, 40)
+                .addComponent(btnTTT)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,11 +208,26 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEMActionPerformed
+
+    private void btnTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransActionPerformed
+
+    private void btnTTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTTTActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbout;
+    private javax.swing.JButton btnEM;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSylvia;
+    private javax.swing.JButton btnTTT;
+    private javax.swing.JButton btnTrans;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
