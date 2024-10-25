@@ -45,6 +45,7 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 153, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
+        btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.setFocusable(false);
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,7 @@ public class ViewUsers extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(675, Short.MAX_VALUE)
+                .addContainerGap(661, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addGap(49, 49, 49))
         );
@@ -67,7 +68,7 @@ public class ViewUsers extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(btnLogOut)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -163,6 +164,7 @@ public class ViewUsers extends javax.swing.JFrame {
                 .addGap(83, 83, 83))
         );
 
+        btnDelete.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setFocusable(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +183,7 @@ public class ViewUsers extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableUsers);
 
+        btnUpdate.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.setFocusable(false);
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +225,7 @@ public class ViewUsers extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDelete)
                             .addComponent(btnUpdate))
-                        .addGap(0, 7, Short.MAX_VALUE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 

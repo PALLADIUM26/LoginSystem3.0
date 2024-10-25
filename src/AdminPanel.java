@@ -26,8 +26,11 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 153, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 100));
 
+        btnLogOut.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.setFocusable(false);
+        btnLogOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogOut.setMargin(new java.awt.Insets(2, 14, 2, 14));
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogOutActionPerformed(evt);
@@ -39,7 +42,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(679, Short.MAX_VALUE)
+                .addContainerGap(665, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addGap(45, 45, 45))
         );
@@ -54,6 +57,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 100);
 
+        btnViewUser.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnViewUser.setText("View Users");
         btnViewUser.setFocusable(false);
         btnViewUser.addActionListener(new java.awt.event.ActionListener() {
@@ -62,17 +66,24 @@ public class AdminPanel extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnViewUser);
-        btnViewUser.setBounds(100, 160, 130, 27);
+        btnViewUser.setBounds(100, 160, 130, 28);
 
+        btnViewData.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnViewData.setText("View Data");
         btnViewData.setFocusable(false);
+        btnViewData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDataActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnViewData);
-        btnViewData.setBounds(100, 230, 130, 27);
+        btnViewData.setBounds(100, 230, 130, 28);
 
+        btnAnalyzeData.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         btnAnalyzeData.setText("Analyze Data");
         btnAnalyzeData.setFocusable(false);
         jPanel1.add(btnAnalyzeData);
-        btnAnalyzeData.setBounds(100, 300, 130, 27);
+        btnAnalyzeData.setBounds(100, 300, 130, 28);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +114,10 @@ public class AdminPanel extends javax.swing.JFrame {
         viewUsersFrame.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnViewUserActionPerformed
+
+    private void btnViewDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewDataActionPerformed
 
 
 
