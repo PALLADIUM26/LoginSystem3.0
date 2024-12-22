@@ -209,11 +209,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEMActionPerformed
-        // TODO add your handling code here:
+        eMotion eMotionFrame = new eMotion();
+        eMotionFrame.setVisible(true);
+        eMotionFrame.pack();
+        eMotionFrame.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnEMActionPerformed
 
     private void btnTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransActionPerformed
-        // TODO add your handling code here:
+        translaTHOR translaTHORFrame = new translaTHOR();
+        translaTHORFrame.setVisible(true);
+        translaTHORFrame.pack();
+        translaTHORFrame.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnTransActionPerformed
 
     private void btnTTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTTTActionPerformed
