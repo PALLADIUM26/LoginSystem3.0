@@ -1,3 +1,10 @@
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,7 +22,7 @@ public class eMotion extends javax.swing.JFrame {
     public eMotion() {
         initComponents();
     }
-
+    String filePath;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,13 +39,12 @@ public class eMotion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnChoose = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        tfOp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("e-motion");
         setMaximumSize(new java.awt.Dimension(32767, 32767));
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -90,8 +96,20 @@ public class eMotion extends javax.swing.JFrame {
         jLabel1.setText("Will detect facial features for mood detection");
 
         btnChoose.setText("choose file");
+        btnChoose.setFocusable(false);
+        btnChoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChooseActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
+        btnSubmit.setFocusable(false);
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Detected Mood");
 
@@ -115,7 +133,7 @@ public class eMotion extends javax.swing.JFrame {
                 .addGap(0, 149, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(276, 276, 276))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,7 +148,7 @@ public class eMotion extends javax.swing.JFrame {
                     .addComponent(btnSubmit))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(0, 92, Short.MAX_VALUE))
         );
@@ -164,6 +182,43 @@ public class eMotion extends javax.swing.JFrame {
         homeFrame.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
+        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        j.setCurrentDirectory(new File("."));
+        int result = j.showOpenDialog(j);
+        
+        if(result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = j.getSelectedFile();
+            filePath = selectedFile.getAbsolutePath();
+        }
+    }//GEN-LAST:event_btnChooseActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        String result = "";
+        System.out.println(filePath + " chosen.");
+        
+        try {
+            ProcessBuilder builder = new ProcessBuilder("python", "src\\eMotion.py", filePath);
+            Process process = builder.start();
+            
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
+            BufferedReader br2 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            
+            String lines = null;
+            while ((lines = br.readLine()) != null) {
+//                System.out.println(lines);
+                result = lines;
+            }
+//            while ((lines = br2.readLine()) != null) {
+//                System.out.println(lines);
+//            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+        tfOp.setText(result);
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +264,6 @@ public class eMotion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField tfOp;
     // End of variables declaration//GEN-END:variables
 }
