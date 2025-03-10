@@ -36,7 +36,7 @@ def giveResult(file_path):
 
     var = (mymodel.predict(test_input) > 0.5).astype("int32")
 
-    res = "Prediction of img by Model: "
+    res = ""
     if var[0][0]==1:
         res += 'Angry'
     elif var[0][1] == 1:

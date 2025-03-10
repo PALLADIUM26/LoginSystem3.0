@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 /*
@@ -23,6 +24,7 @@ public class eMotion extends javax.swing.JFrame {
         initComponents();
     }
     String filePath;
+    int flag = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,10 +43,10 @@ public class eMotion extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
         tfOp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        lblChosen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("e-motion");
-        setMaximumSize(new java.awt.Dimension(32767, 32767));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -93,9 +95,14 @@ public class eMotion extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        jLabel1.setText("Will detect facial features for mood detection");
+        jLabel1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Facial features recognition");
 
-        btnChoose.setText("choose file");
+        btnChoose.setBackground(new java.awt.Color(0, 0, 0));
+        btnChoose.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnChoose.setForeground(new java.awt.Color(153, 255, 255));
+        btnChoose.setText("Choose file");
         btnChoose.setFocusable(false);
         btnChoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +110,9 @@ public class eMotion extends javax.swing.JFrame {
             }
         });
 
+        btnSubmit.setBackground(new java.awt.Color(0, 0, 0));
+        btnSubmit.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(153, 255, 255));
         btnSubmit.setText("Submit");
         btnSubmit.setFocusable(false);
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +121,16 @@ public class eMotion extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Detected Mood");
+        tfOp.setBackground(new java.awt.Color(51, 51, 51));
+        tfOp.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        tfOp.setForeground(new java.awt.Color(153, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Detected Mood by Model");
+
+        lblChosen.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lblChosen.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -121,36 +140,42 @@ public class eMotion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(227, 227, 227)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnChoose)
+                                .addGap(77, 77, 77)
+                                .addComponent(lblChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(btnChoose)
-                        .addGap(225, 225, 225)
-                        .addComponent(btnSubmit)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(307, 307, 307)
+                        .addComponent(jLabel1)))
+                .addContainerGap(246, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 149, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(276, 276, 276))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSubmit)
+                .addGap(357, 357, 357))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(76, 76, 76)
                 .addComponent(jLabel1)
-                .addGap(108, 108, 108)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnChoose)
-                    .addComponent(btnSubmit))
-                .addGap(53, 53, 53)
+                    .addComponent(lblChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSubmit)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(0, 92, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(tfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,7 +186,7 @@ public class eMotion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -191,28 +216,36 @@ public class eMotion extends javax.swing.JFrame {
         if(result == JFileChooser.APPROVE_OPTION){
             File selectedFile = j.getSelectedFile();
             filePath = selectedFile.getAbsolutePath();
+            lblChosen.setText("Image chosen");
+            flag  = 1;
         }
     }//GEN-LAST:event_btnChooseActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         String result = "";
-        System.out.println(filePath + " chosen.");
+//        lblChosen.setText("Yes");
         
+        System.out.println(filePath + " chosen.");
+                
         try {
-            ProcessBuilder builder = new ProcessBuilder("python", "src\\eMotion.py", filePath);
-            Process process = builder.start();
-            
-            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
-            BufferedReader br2 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            
-            String lines = null;
-            while ((lines = br.readLine()) != null) {
-//                System.out.println(lines);
-                result = lines;
+            if(flag == 1){
+                ProcessBuilder builder = new ProcessBuilder("python", "src\\eMotion.py", filePath);
+                Process process = builder.start();
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"));
+                BufferedReader br2 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+
+                String lines = null;
+                while ((lines = br.readLine()) != null) {
+    //                System.out.println(lines);
+                    result = lines;
+                }
+    //            while ((lines = br2.readLine()) != null) {
+    //                System.out.println(lines);
+    //            }
+            } else {
+                JOptionPane.showMessageDialog(this, "No file chosen", "Select a file", JOptionPane.ERROR_MESSAGE);
             }
-//            while ((lines = br2.readLine()) != null) {
-//                System.out.println(lines);
-//            }
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -264,6 +297,7 @@ public class eMotion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblChosen;
     private javax.swing.JTextField tfOp;
     // End of variables declaration//GEN-END:variables
 }
