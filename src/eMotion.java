@@ -237,12 +237,12 @@ public class eMotion extends javax.swing.JFrame {
 
                 String lines = null;
                 while ((lines = br.readLine()) != null) {
-    //                System.out.println(lines);
+                    System.out.println(lines);
                     result = lines;
                 }
-    //            while ((lines = br2.readLine()) != null) {
-    //                System.out.println(lines);
-    //            }
+                while ((lines = br2.readLine()) != null) {
+                    System.out.println(lines);
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "No file chosen", "Select a file", JOptionPane.ERROR_MESSAGE);
             }

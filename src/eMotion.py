@@ -14,7 +14,7 @@ def giveResult(file_path):
     #print("from python2 "+file_path)
     # saved_path = convert(file_path)
 
-    model_path = r"D:\programming\javaP\LoginSystem3.0\src\model2.h5"
+    model_path = r".\\src\\model2.h5"
     from keras.models import load_model
     mymodel = load_model(model_path) #91% accuracy
 
