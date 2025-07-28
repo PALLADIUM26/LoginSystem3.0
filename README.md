@@ -2,6 +2,8 @@
 
 This is a Java-ANT-based software, with simple GUI, developed as part of a project. The system provides functionalities for user authentication and management.
 
+---
+
 ## Features
 - User Registration (Data stored in MySQL)
 - User Login
@@ -10,14 +12,20 @@ This is a Java-ANT-based software, with simple GUI, developed as part of a proje
 - Admin Panel (implementation of CRUD is under progress)
 - The OTP verification is done by SMTP
 
+---
+
 ## Project Structure
 - `src/`: Contains the Java source code files.
 - `nbproject/`: NetBeans project files.
 - `.gitignore`: Specifies files and directories to be ignored by Git.
 
+---
+
 ## Requirements
 - Java Development Kit (JDK) 8 or higher
 - NetBeans IDE (Optional, for easier management)
+
+---
 
 ## Installation
 1. Clone the repository:
@@ -32,10 +40,33 @@ This is a Java-ANT-based software, with simple GUI, developed as part of a proje
 - Login using the registered credentials.
 - The system will handle user sessions.
 
+---
+
+## Demo
+
+### Startup
+![pg1](https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/1.png)
+
+### Authentication
+<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/2a.png" alt="pg2a" height=250>
+<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/2b.png" alt="pg2b" height=250>
+
+### Home
+<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3a.png" alt="pg3a" height=250>
+<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3b.png" alt="pg3b" height=250>
+
+### Features
+![pg4](https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/4.png)
+![pg5](https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/5.png)
+
+---
+
 ## URL for Libraries (.jar files)
 - https://github.com/javaee/activation/releases
 - https://dbschema.com/jdbc-driver/mysql.html
 - https://javaee.github.io/javamail/#Download_JavaMail_Release
+
+---
 
 ## Contributing
 Feel free to fork this repository and submit pull requests. Any contributions are welcome!
