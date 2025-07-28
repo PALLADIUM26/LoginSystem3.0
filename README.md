@@ -51,7 +51,7 @@ This is a Java-ANT-based software, with simple GUI, developed as part of a proje
 <img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/2a.png" alt="pg2a" height=250> <img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/2b.png" alt="pg2b" height=250>
 
 ### Home
-<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3a.png" alt="pg3a" heigh=200> <img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3b.png" alt="pg3b" height=200>
+<img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3a.png" alt="pg3a" height=250> <img src="https://github.com/PALLADIUM26/LoginSystem3.0/blob/master/src/demoPics/3b.png" alt="pg3b" height=250>
 
 ### Features
 #### Number System Converter
